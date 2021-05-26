@@ -1,6 +1,5 @@
 const express = require('express');
-const fileUpload = require('express-fileupload');
-const anomalyDetection = require('./AnomalyDetector');
+const anomalyDetection = require('../model/anomaly-detector.js');
 const app = express();
 var models; 
 app.get('/', function(req, res) {
