@@ -19,7 +19,7 @@ export class ControllerService {
 
   // Add
   LearnNormal(data: any): Observable<any> {
-    let API_URL = `${this.REST_API}/learn`;
+    let API_URL = `${this.REST_API}/detect`;
     return this.httpClient.post(API_URL, data)
       .pipe(
         catchError(this.handleError)
