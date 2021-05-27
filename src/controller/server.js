@@ -1,5 +1,5 @@
 const express = require('express');
-const anomalyDetection = require('./AnomalyDetector');
+const anomalyDetection = require('../model/anomaly-detector.js');
 const app = express();
 var models; 
 app.get('/', function(req, res) {
@@ -7,7 +7,7 @@ app.get('/', function(req, res) {
 })
 
 app.post('/detect' , (req , res)=>{
-    
+
    
 })
 
