@@ -1,1 +1,27 @@
-<p>models-list works!</p>
+<!-- <div class="container">
+  <h3>
+    Set Anomaly Detection Algorithm
+  </h3>
+  <mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let algorithm of anomalyAlgorithms" [selected]="algorithm === 'Regression'">
+      {{algorithm}}
+    </mat-list-option>
+  </mat-selection-list>
+</div>
+<p>
+    Algorithm selected: {{anomalyAlgorithms.selectedOptions.selected}}
+  </p>-->
+
+<div>
+  <label class="header-label" id="example-radio-group-label">Pick Detection Algorithm</label>
+  <mat-radio-group  [(ngModel)]="selection" class="example-radio-group" >
+    <mat-radio-button class="algorithm-type" value="Hybrid">
+      Hybrid
+    </mat-radio-button>
+    <mat-radio-button class="algorithm-type" value="Regression">
+      Regression
+    </mat-radio-button>
+  </mat-radio-group>
+</div>
+
+<!-- [(ngModel)]="selection"  -->

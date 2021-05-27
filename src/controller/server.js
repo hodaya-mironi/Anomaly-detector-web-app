@@ -1,5 +1,4 @@
 const express = require('express');
-const fileUpload = require('express-fileupload');
 const anomalyDetection = require('./AnomalyDetector');
 const app = express();
 var models; 
@@ -8,7 +7,7 @@ app.get('/', function(req, res) {
 })
 
 app.post('/detect' , (req , res)=>{
-
+    
    
 })
 

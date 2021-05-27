@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg)
+  }
+
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg)
+  }
+
+  20% {
+    transform: translate(-1px, -2px) rotate(-1deg)
+  }
+
+
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: rgba(0, 139, 139, 0.7);
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: rgba(0, 139, 139, 0.7);
+}
+
+/* .mat-radio-button .mat-accent .mat-radio-checked .cdk-focused .cdk-program-focused{
+    background-color: rgba(0, 139, 139, 0.7);
+
+} */
+
+.mat-button-focus-overlay {
+  background-color: transparent !important;
+}
+
+.mat-ripple {
+  visibility: hidden;
+}
