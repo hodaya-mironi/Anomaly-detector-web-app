@@ -22,9 +22,10 @@ app.use(cors(corsOptions));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname));
     // req.files.learn_file.data.toString()
-})
+});
 
-app.get('/api/features', (req, res) => {
+app.get('/api/getFeatures', (req, res) => {
+//var a = new sim
 features = anomalyDetector.getFeatures();
 res.json(features);
 res.end();
@@ -35,10 +36,12 @@ app.post('/api/correlative' , (req, res) => {
 
 //Post Method for '/search' url
 app.post('/api/detect', (req, res) => {
-    console.log("req" + req.body?.normalString);
-    res.json({
-        1: 'ss'
-    })
+    anomalyDetector = new anomalyDetection.SimpleAnomalyDetector();
+    features = anomalyDetector.learnNormal(req.body?.normalString);
+    // console.log("req" + req.body?.normalString);
+    //features = anomalyDetector.getFeatures();
+    res.json(features);
+    res.end();
     // res.end();
     // Input the JSON and put in string anomaly path and detect path
     // let normalStringName = req?.body?.NormalString;
