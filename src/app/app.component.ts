@@ -35,5 +35,10 @@ export class AppComponent {
     }, (err) => {
       console.log(err);
   });
+  this.controllerService.getFeatures().subscribe(res => {
+    console.log(res)
+  }, (err) => {
+    console.log(err);
+  })
 }
 }

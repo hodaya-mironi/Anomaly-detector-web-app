@@ -18,14 +18,22 @@ export class ControllerService {
   constructor(private httpClient: HttpClient) { }
 
   // Add
-  LearnNormal(data: any): Observable<any> {
+  LearnNormal(payload: any): Observable<any> {
     let API_URL = `${this.REST_API}/detect`;
-    return this.httpClient.post(API_URL, data)
+    return this.httpClient.post(API_URL, payload)
       .pipe(
         catchError(this.handleError)
       )
   }
 
+  getFeatures(): Observable<any> { 
+    const payload = undefined;
+    let API_URL = `${this.REST_API}/getFeatures`;
+    return this.httpClient.post(API_URL, payload)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
   detectAnomalies(data: string): Observable<any> {
     let API_URL = `${this.REST_API}/detect`;
     return this.httpClient.post(API_URL, data)

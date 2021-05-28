@@ -3,12 +3,21 @@ const anomalyDetection = require('./src/model/anomaly-detector.js');
 const app = express();
 const path= require('path');
 var port = process.env.PORT || 8080; 
+const bp = require('body-parser')
 const fs = require('fs');
 const cors = require('cors');
 const { connectableObservableDescriptor } = require('rxjs/internal/observable/ConnectableObservable');
 var models; 
 var anomalyDetector;
 app.use(express.static(path.join(__dirname + '/dist/anomaly-detection-web-app')));
+app.use(bp.json({limit: '50mb'}));
+app.use(bp.urlencoded({limit: '50mb', extended: true}));
+var corsOptions = {
+    origin:"https://localhost:8080"
+}
+
+app.use(cors(corsOptions));
+
 // app.use(express.static(path.join(__dirname + '/dist/anomaly-detection-web-app')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname));
@@ -23,15 +32,14 @@ res.end();
 );
 app.post('/api/correlative' , (req, res) => {
 });
-var corsOptions = {
-    origin:"https://localhost:8080"
-}
-app.use(cors(corsOptions));
 
 //Post Method for '/search' url
 app.post('/api/detect', (req, res) => {
-    res.write("haiush michush");
-    res.end();
+    console.log("req" + req.body?.normalString);
+    res.json({
+        1: 'ss'
+    })
+    // res.end();
     // Input the JSON and put in string anomaly path and detect path
     // let normalStringName = req?.body?.NormalString;
     // let anomalyStringContent = req?.body?.anomalyString;
