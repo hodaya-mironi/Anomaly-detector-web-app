@@ -14,13 +14,9 @@
 
 <div>
   <label class="header-label" id="example-radio-group-label">Pick Detection Algorithm</label>
-  <mat-radio-group  [(ngModel)]="selection" class="example-radio-group" >
-    <mat-radio-button class="algorithm-type" value="Hybrid">
-      Hybrid
-    </mat-radio-button>
-    <mat-radio-button class="algorithm-type" value="Regression">
-      Regression
-    </mat-radio-button>
+  <mat-radio-group [(ngModel)]="selection" class="example-radio-group">
+    <mat-radio-button class="algorithm-type" *ngFor="let algo of anomalyAlgorithms" [value]="algo"
+      > {{algo}}</mat-radio-button>
   </mat-radio-group>
 </div>
 

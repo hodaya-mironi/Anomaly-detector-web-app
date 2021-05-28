@@ -36,5 +36,7 @@ export class DropOffComponent implements OnInit {
     fileReader.readAsText(this.fileToUpload);
   }
 
-  uploadFileToServer() {}
+  public deleteFile() {
+    this.fileToUpload = undefined;
+  }
 }

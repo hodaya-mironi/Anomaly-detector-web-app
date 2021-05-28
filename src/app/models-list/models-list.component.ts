@@ -13,9 +13,11 @@ export class ModelsListComponent implements OnInit {
   }
   
   @Output() public changeSelection: EventEmitter<string> = new EventEmitter();
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
+
   }
 
 

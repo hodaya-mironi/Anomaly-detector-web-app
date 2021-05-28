@@ -1,4 +1,4 @@
-<div  *ngIf="!fileToUpload" class="container" appDnd (fileDropped)="onFileDropped($event)">
+<div *ngIf="!fileToUpload" class="container" appDnd (fileDropped)="onFileDropped($event)">
   <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event)" />
   <input type="file" #fileDropRef id="fileDropRef" accept=".csv" (change)="fileBrowseHandler($event)">
   <svg xmlns="http://www.w3.org/2000/svg" width="63" height="64" viewBox="0 0 63 64">
@@ -15,9 +15,12 @@
   <h3>or</h3>
   <label for="fileDropRef">Browse for file</label>
 </div>
-<div class="uploadedFile" *ngIf="fileToUpload">
-  <div class="header">
-The uploaded {{ fileType }} file :
-</div> 
-<div class="fileName">{{ fileToUpload?.name}}
+<div class="container" *ngIf="fileToUpload">
+  <h3 class="header">
+    The uploaded {{ fileType }} file :
+  </h3>
+  <label class="file-name">
+    <img (click)="deleteFile()" src="../../assets/images/delete-file.svg"/>
+    {{fileToUpload?.name}}
+  </label>
 </div>

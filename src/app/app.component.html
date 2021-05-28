@@ -1,4 +1,8 @@
 <div>
+  <div class="header-pas">
+    AnomalyDetectionWebApp
+
+  </div>
   <span class="drop-off-files">
     <drop-off [fileType]="'normal'" (fileContentEmitter)="onLearnAnomalyFileUpload($event)"></drop-off>
     <drop-off [fileType]="'anomaly'" (fileContentEmitter)="onDetectAnomalyFileUpload($event)"></drop-off>
@@ -6,6 +10,7 @@
   <span class="models">
     <app-models-list (changeSelection)="onAlgorithmSelectedChange($event)"></app-models-list>
   </span>
+  <span class="uplaod-button"></span>
 </div>
 <div class="graphs">
   <!-- <app-graphs></app-graphs> -->

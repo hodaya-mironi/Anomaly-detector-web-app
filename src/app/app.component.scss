@@ -7,7 +7,16 @@
     }
 }
 .models{
-    width: 50%;
+    width: 30%;
     display: inherit;
     padding: 0px 25px;
+}
+.header-pas{
+    font-size: 16px;
+    font-weight: 600;
+    color: #38424c;
+    width: 100%;
+    height:30px;
+    padding-left: 30px;
+    background-image:linear-gradient(to right, rgb(0 139 139 / 5%) , rgba(0, 139, 139, 0.7));
 }
