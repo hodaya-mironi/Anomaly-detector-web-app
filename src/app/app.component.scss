@@ -8,7 +8,7 @@
 }
 .models{
     width: 30%;
-    display: inherit;
+    display: inline-flex;
     padding: 0px 25px;
 }
 .header-pas{
@@ -19,4 +19,33 @@
     height:30px;
     padding-left: 30px;
     background-image:linear-gradient(to right, rgb(0 139 139 / 5%) , rgba(0, 139, 139, 0.7));
+
 }
+
+.upload-button{
+    button {
+        background-color: rgba(0, 139, 139, 0.7);
+        height: 100px;
+        width: 100px;
+        font-size: 25px;
+        margin-top: 30px;
+        position: fixed;
+    }
+}
+
+.features-list{
+  
+}
+app-features-list {
+    display: inline-flex;
+    width: 20%;
+    overflow-y: scroll;
+    height: 350px;
+}
+app-anomalies-list {
+    display: inline-flex;
+    width: 20%;
+    overflow-y: scroll;
+    height: 350px;
+}
+

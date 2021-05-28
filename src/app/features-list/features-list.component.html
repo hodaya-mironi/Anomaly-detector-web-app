@@ -1,0 +1,7 @@
+<div class="features-list">
+  <mat-selection-list [multiple]="false" #list [(ngModel)]="selection">
+    <mat-list-option *ngFor="let feature of featuresList" [value]="feature">
+      {{feature}}
+    </mat-list-option>
+  </mat-selection-list>
+</div>

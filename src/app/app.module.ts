@@ -14,6 +14,10 @@ import {MatRadioModule} from '@angular/material/radio'
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxCSVtoJSONModule } from 'ngx-csvto-json';
+import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button';
+import { FeaturesListComponent } from './features-list/features-list.component';
+import { AnomaliesListComponent } from './anomalies-list/anomalies-list.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +26,9 @@ import { NgxCSVtoJSONModule } from 'ngx-csvto-json';
     GraphsComponent,
     DropOffComponent,
     DataTableComponent,
-    UploadDirective  ],
+    UploadDirective,
+    FeaturesListComponent,
+    AnomaliesListComponent  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -31,7 +37,9 @@ import { NgxCSVtoJSONModule } from 'ngx-csvto-json';
     MatRadioModule,
     FormsModule,
     HttpClientModule,
-    NgxCSVtoJSONModule
+    NgxCSVtoJSONModule,
+    MatIconModule,
+    MatButtonModule
 
     ],
   providers: [],

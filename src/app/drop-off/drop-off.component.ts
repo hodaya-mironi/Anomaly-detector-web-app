@@ -38,5 +38,6 @@ export class DropOffComponent implements OnInit {
 
   public deleteFile() {
     this.fileToUpload = undefined;
+    this.fileContentEmitter.emit(undefined);
   }
 }

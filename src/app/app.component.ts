@@ -20,7 +20,6 @@ export class AppComponent {
    }
   public onDetectAnomalyFileUpload(fileString: any) {
     this.normalString = fileString;
-    this.sendPayload();
   }
 
   public sendPayload() {

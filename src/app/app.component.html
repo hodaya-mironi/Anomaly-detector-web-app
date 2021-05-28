@@ -1,7 +1,6 @@
 <div>
   <div class="header-pas">
     AnomalyDetectionWebApp
-
   </div>
   <span class="drop-off-files">
     <drop-off [fileType]="'normal'" (fileContentEmitter)="onLearnAnomalyFileUpload($event)"></drop-off>
@@ -10,8 +9,17 @@
   <span class="models">
     <app-models-list (changeSelection)="onAlgorithmSelectedChange($event)"></app-models-list>
   </span>
-  <span class="uplaod-button"></span>
+  <span class="upload-button">
+    <button (click)="sendPayload()" [disabled]="!normalString || !anomalyString || !chosenAlgorithm" mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
+      Detect!
+    </button>
+  </span>
 </div>
+<div class="features-list">
+  <app-anomalies-list></app-anomalies-list>
+  <app-features-list></app-features-list>
+</div>
+
 <div class="graphs">
   <!-- <app-graphs></app-graphs> -->
 </div>
