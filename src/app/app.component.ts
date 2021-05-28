@@ -11,13 +11,13 @@ export class AppComponent {
   anomalyString: File;
   normalString: File;
   title = 'Anomaly Detection Server';
-  constructor(private controllerService: ControllerService){}
+  constructor(private controllerService: ControllerService) { }
   public onAlgorithmSelectedChange(selected: string) {
     this.chosenAlgorithm = selected;
   }
   public onLearnAnomalyFileUpload(fileString: any) {
     this.anomalyString = fileString;
-   }
+  }
   public onDetectAnomalyFileUpload(fileString: any) {
     this.normalString = fileString;
   }
@@ -28,16 +28,21 @@ export class AppComponent {
       anomalyString: this.anomalyString,
       chosenAlgorithm: this.chosenAlgorithm,
     };
-  this.controllerService.LearnNormal(payload)
-  .subscribe(res => {
-    console.log(res)
-    }, (err) => {
-      console.log(err);
-  });
-  this.controllerService.getFeatures().subscribe(res => {
-    console.log(res)
-  }, (err) => {
-    console.log(err);
-  })
-}
+     this.controllerService.LearnNormal(payload)
+       .subscribe(res => {
+          console.log(res);
+          // this.controllerService.getFeatures().subscribe(res => {
+          //   console.log(res)
+          // }, (err) => {
+          //   console.log(err);
+          // });
+      }, (err) => {
+         console.log(err);
+       });
+    // this.controllerService.getFeatures().subscribe(res => {
+    //   console.log(res)
+    // }, (err) => {
+    //   console.log(err);
+    // });
+  }
 }

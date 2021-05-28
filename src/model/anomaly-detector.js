@@ -1,3 +1,4 @@
+const { summaryFileName } = require('@angular/compiler/src/aot/util');
 const { report } = require('process');
 const readline = require('readline');
 const minEnclosingCircle = require('smallest-enclosing-circle');
@@ -27,6 +28,12 @@ class Line {
     a;
     b;
 
+    // Default constructor
+    /*constructor() {
+        this.a = 0;
+        this.b = 0;
+    }*/
+
     // Constructor
     constructor(a, b) {
         this.a = a;
@@ -41,28 +48,27 @@ class Line {
 
 class AnomalyDetectionUtil {
     average(numbers) {
-        var i = 0;
+        var i=0;
         var sum = 0;
-        var len = numbers?.length;
+        var len = numbers.length;
         for (i = 0; i < len; i++) {
-            sum += numbers[i];
+            sum = sum + parseInt(numbers[i]);
         }
         return (sum / len);
     }
 
     variance(numbers) {
         var avg = this.average(numbers);
-        var sum = 0;
-        var len = numbers.length;
+        var sum = 0, len = numbers.length;
         for (var i = 0; i < len; i++) {
-            sum += numbers[i] * numbers[i];
+            sum += Math.pow(numbers[i], 2);
+            
         }
-        return sum / len - avg * avg;
+        return sum / len - Math.pow(avg, 2);
     }
 
     covariance(numbers1, numbers2) {
-        var sum = 0;
-        var len = numbers1.length;
+        var sum = 0, len = numbers1.length;
         for (var i = 0; i < len; i++) {
             sum += numbers1[i] * numbers2[i];
         }
@@ -82,7 +88,7 @@ class AnomalyDetectionUtil {
         return new Line(a, b);
     }
 
-    myDeviation(p, l) {
+    deviation(p, l) {
         var x = p.getY() - l.f(p.getX());
         if (x < 0) {
             x = x * -1;
@@ -90,15 +96,15 @@ class AnomalyDetectionUtil {
         return x;
     }
 
-    deviation(p, numbers1, numbers2) {
+    deviation2(p, numbers1, numbers2) {
         var l = this.linearRegression(numbers1, numbers2);
-        return this.myDeviation(p, l);
+        return this.deviation(p, l);
     }
 }
 
 class CorrelatedFeatures {
     // Data members/
-    feature1;
+    feature1; 
     feature2;
     correlation;
     regressionLine;
@@ -156,7 +162,7 @@ class CorrelatedFeatures {
     setIsCircle(circle1) {
         this.isCircle = circle1;
     }
-}
+ }
 
 //  class Correlations {
 //      cf;
@@ -213,7 +219,7 @@ class CorrelatedFeatures {
 //             }
 //          }
 //      }
-
+     
 //  }
 
 //  class LineAnomalyDetector {
@@ -261,36 +267,36 @@ class CorrelatedFeatures {
 
 //     }
 //     ////////////////////////////////////////
-//     /////////////////////MORIA//////////////
+//     ///////////////////////////////////
 //     ////////////////////////////////////////
 
 //  }
 
-class Circle {
-    // Data members
-    center;
-    radius;
-    static minCirc;
+ class Circle {
+     // Data members
+     center;
+     radius;
+     static minCirc;
 
-    constructor(center, radius) {
-        this.center = center;
-        this.radius = radius;
-    }
-    distance(a, b) {
-        var x2 = Math.pow(a.getX() - b.getX(), 2);
-        var y2 = Math.pow(a.getY() - b.getY(), 2);
-        return Math.sqrt(x2 + y2);
-    }
-    getCenter() {
-        return this.center;
-    }
-    getRadius() {
-        return this.radius;
-    }
+     constructor(center, radius) {
+         this.center = center;
+         this.radius = radius;
+     }
+     distance(a, b) {
+         x2 = Math.pow(a.getX() - b.getX(), 2);
+         y2 = Math.pow(a.getY() - b.getY(), 2);
+         return Math.sqrt(x2 + y2);
+     }
+     getCenter() {
+         return this.center;
+     }
+     getRadius() {
+         return this.radius;
+     }
 
-}
+ }
 
-class SimpleAnomalyDetector {
+ class SimpleAnomalyDetector {
     cf;
     threshold;
     report = [];
@@ -315,29 +321,34 @@ class SimpleAnomalyDetector {
         this.report = [];
     }
     learnNormal(fileContent) {
+        
         let lines = fileContent.split("\n");
-        var keys = lines[0].split(",");
-        for (let i = 0; i < keys.length; i++) {
-            this.regFlight[keys[i]] = [];
+        this.keys = lines[0].split(",");
+        for (let i = 0; i < this.keys.length; i++) {
+            this.regFlight[this.keys[i]] = [];
         }
-        console.log(this.regFlight);
         for (let i = 1; i < (lines.length) - 1; i++) {
             let temp = lines[i].split(',');
-            for (let j = 0; j < (keys.length); j++) {
+            for (let j = 0; j < (this.keys.length); j++) {
                 // data[features[j]].Add(temp[j]);
-                this.regFlight[keys[j]] = temp[j];
+                this.regFlight[this.keys[j]].push(temp[j]);
             }
         }
+        var util = new AnomalyDetectionUtil();
+      //  var columnLength = this.regFlight['aileron'].length;
         for (var i = 0; i < this.keys.length; i++) {
             var maxPearson = 0.5;
             var correlation = new CorrelatedFeatures();
-            for (j = i + 1; j < this.keys.length; j++) {
-                p = pearson(this.regFlight[keys[i]], this.regFlight[keys[j]]);
+            for (var j = i + 1; j < this.keys.length; j++) {
+                var p = util.pearson(this.regFlight[this.keys[i]], this.regFlight[this.keys[j]]);
+                // console.log("p: " + p);
+                // console.log("max: "+maxPearson);
                 if (p > maxPearson) {
                     maxPearson = p;
-                    correlation.setFeature1(keys[i]);
-                    correlation.setFeature2(keys[j]);
+                    correlation.setFeature1(this.keys[i]);
+                    correlation.setFeature2(this.keys[j]);
                     correlation.setCorrelation(p);
+                    correlation = this.completeCorrelation(correlation, this.regFlight[this.keys[i]], this.regFlight[this.keys[j]]);
                     // correlation.setRegressionLine(linearRegression(this.regFlight[keys[i]], this.regFlight[keys[j]]));
                     // correlation.setThreshold(0);
                     // for (k = 0; k < columnLength; k++) {
@@ -347,49 +358,48 @@ class SimpleAnomalyDetector {
                     //     }
                     // }
                 }
-            }
+            } 
             if (maxPearson != 0.5) {
                 this.cf.push(correlation);
             }
         }
+        var features = {"features":this.keys};
+        return features;
     }
     completeCorrelation(correlation, numbers1, numbers2) {
-        var obj = new AnomalyDetectionUtil();
-        var l = obj.linearRegression(numbers1, numbers2);
+        var util = new AnomalyDetectionUtil();
+        var l = util.linearRegression(numbers1, numbers2);
         correlation.setRegressionLine(l);
         correlation.setThreshold(0);
         for (var k = 0; k < numbers1.length; k++) {
-            var deviation = obj.deviation(new Point(numbers1[k], numbers2[k]), correlation.getRegressionLine());
+            var deviation = util.deviation(new Point(numbers1[k], numbers2[k]), correlation.getRegressionLine());
             if (deviation > correlation.getThreshold()) {
                 correlation.setThreshold(deviation);
             }
         }
-        return correlation;
+    return correlation;
     }
     detect(fileContent) {
         let lines = fileContent.split("\n");
-        console.log(this.keys);
-        for (let i = 0; i < this.keys.length; i++) {
-            this.anomalousFlight[keys[i]] = [];
+        for (let i = 0; i < keys.length; i++) {
+            anomalousFlight[keys[i]] = [];
         }
         for (let i = 1; i < (lines.length) - 1; i++) {
             let temp = lines[i].split(',');
-            for (let j = 0; j < this.keys.length; j++) {
-                this.anomalousFlight[keys[j]] = temp[j];
+            for (let j = 0; j < (keys.length); j++) {
+                anomalousFlight[keys[j]].push(temp[j]);
             }
         }
-        console.log(this.anomalousFlight);
-        let [first] = Object.keys(this.anomalousFlight);
-        console.log(first);
-        var columnLength = this.anomalousFlight[first]?.length;
-        for (let i = 0; i < this.cf.length; i++) {
-            for (let j = 0; j < columnLength; j++) {
+        
+        columnLength = this.anomalousFlight[0].length;
+        for (i = 0; i < this.cf.length; i++) {
+            for (j = 0; columnLength; j++) {
                 p = new Point(this.anomalousFlight[cf[i].getFeature1()][j], this.anomalousFlight[cf[i].getFeature2()][j]);
                 // if (deviation(p, correlation.getRegressionLine()) > 1.1 * correlation.getThreshold()) {
                 //     ar = new AnomalyReport(cf[i].getFeature1(), cf[i].getFeature2(), j + 1);
                 //     report.push(ar);
                 // }
-                var report = this.createReport(p, cf[i], j);
+                this.createReport(p, cf[i], j);
             }
         }
         return report;
@@ -400,11 +410,16 @@ class SimpleAnomalyDetector {
             report.push(ar);
         }
     }
-}
 
-class AnomalyReport {
-    // Data members/
-    feature1;
+    getFeatures(){
+        var features = {"features":this.keys};
+        return features;
+    }
+ }
+
+ class AnomalyReport {
+     // Data members/
+    feature1; 
     feature2;
     timeStep;
     constructor(feature1, feature2, timeStep) {
@@ -431,43 +446,43 @@ class AnomalyReport {
     setTimeStep(time) {
         this.timeStep = time;
     }
-}
+ }
 
-class HybridAnomalyDetector extends SimpleAnomalyDetector {
-    constructor() {
-        super();
-    }
-    completeCorrelation(correlation, numbers1, numbers2) {
-        if (correlation.getCorrelation() >= 0.9) {
-            super.completeCorrelation(correlation, numbers1, numbers2);
-        }
-        if ((correlation.getCorrelation() > 0.5) && (correlation.getCorrelation() > 0.9)) {
-            correlation.setIsCircle(true);
-            let points = [];
-            for (i = 0; i < numbers1.length; i++) {
-                points.push(new Point(numbers1[i], numbers2[i]));
-            }
-            let c = new minEnclosingCircle(points);
-            correlation.setX(c.getCenter().getX());
-            correlation.setY(c.getCenter().getY());
-            correlation.setThreshold(c.getRadius());
-        }
-        return correlation;
-    }
+ class HybridAnomalyDetector extends SimpleAnomalyDetector {
+     constructor() {
+         super();
+     }
+     completeCorrelation(correlation, numbers1, numbers2) {
+         if (correlation.getCorrelation() >= 0.9) {
+             super.completeCorrelation(correlation, numbers1, numbers2);
+         }
+         if ((correlation.getCorrelation() > 0.5) && (correlation.getCorrelation() > 0.9)) {
+             correlation.setIsCircle(true);
+             let points = [];
+             for (i = 0; i < numbers1.length; i++) {
+                 points.push(new Point(numbers1[i], numbers2[i]));
+             }
+             let c = new minEnclosingCircle(points);
+             correlation.setX(c.getCenter().getX());
+             correlation.setY(c.getCenter().getY());
+             correlation.setThreshold(c.getRadius());
+         }
+         return correlation;
+     }
 
-    createReport(p, correlation, index) {
+     createReport(p, correlation, index) {
         if (!correlation.getIsCircle()) {
             super.createReport(p, correlation, index);
         } else {
             if (distance(p, new Point(correlation.getX(), correlation.getY())) > 1.1 * correlation.getThreshold()) {
-                var ar = new AnomalyReport(correlation.getFeature1(), correlation.getFeature2(), index + 1);
+                ar = new AnomalyReport(correlation.getFeature1(), correlation.getFeature2(), index + 1);
                 report.push(ar);
             }
         }
     }
 
-}
+ }
 
-module.exports = { Point, Line, AnomalyDetectionUtil, CorrelatedFeatures, Circle, SimpleAnomalyDetector, AnomalyReport, HybridAnomalyDetector };
+module.exports = {Point, Line, AnomalyDetectionUtil, CorrelatedFeatures, Circle, SimpleAnomalyDetector, AnomalyReport, HybridAnomalyDetector};
 
 

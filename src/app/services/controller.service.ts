@@ -27,9 +27,8 @@ export class ControllerService {
   }
 
   getFeatures(): Observable<any> { 
-    const payload = undefined;
     let API_URL = `${this.REST_API}/getFeatures`;
-    return this.httpClient.get(API_URL, payload)
+    return this.httpClient.get(API_URL)
       .pipe(
         catchError(this.handleError)
       )
