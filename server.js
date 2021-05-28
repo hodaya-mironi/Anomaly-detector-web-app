@@ -16,6 +16,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/features', (req, res) => {
+features = anomalyDetector.getFeatures();
+res.json(features);
+res.end();
 }
 );
 app.post('/api/correlative' , (req, res) => {
@@ -71,18 +74,18 @@ app.listen(port, function() {
     // console.log(a.detect("Moria,Yefet\n1,2\n3,4\n"));
 })
 
-[{
-    feature1: 'A',
-    feature2: 'B',
-    timestep: 145
-},
-{
-    feature1: 'A',
-    feature2: 'B',
-    timestep: 146
-},{
-    feature1: 'A',
-    feature2: 'B',
-    timestep: 148
-},
-]
+// [{
+//     feature1: 'A',
+//     feature2: 'B',
+//     timestep: 145
+// },
+// {
+//     feature1: 'A',
+//     feature2: 'B',
+//     timestep: 146
+// },{
+//     feature1: 'A',
+//     feature2: 'B',
+//     timestep: 148
+// },
+// ]
