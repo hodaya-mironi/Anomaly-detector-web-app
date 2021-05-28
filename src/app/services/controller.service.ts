@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, mergeMap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
@@ -21,10 +21,13 @@ export class ControllerService {
   LearnNormal(payload: any): Observable<any> {
     let API_URL = `${this.REST_API}/detect`;
     return this.httpClient.post(API_URL, payload)
-      .pipe(
+      .pipe(mergeMap((res: Response, index: number) => {
+         return this.detectAnomalies(payload);
+      }),
         catchError(this.handleError)
       )
   }
+
 
   getFeatures(): Observable<any> { 
     let API_URL = `${this.REST_API}/getFeatures`;

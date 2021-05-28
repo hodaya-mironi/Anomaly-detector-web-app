@@ -380,6 +380,7 @@ class CorrelatedFeatures {
     return correlation;
     }
     detect(fileContent) {
+        return {'1':"aa"};
         let lines = fileContent.split("\n");
         for (let i = 0; i < keys.length; i++) {
             anomalousFlight[keys[i]] = [];
@@ -402,7 +403,8 @@ class CorrelatedFeatures {
                 this.createReport(p, cf[i], j);
             }
         }
-        return report;
+        //return report;
+        return {'1':"aa"};
     }
     createReport(p, correlation, index) {
         if (deviation(p, correlation.getRegressionLine()) > 1.1 * correlation.getThreshold()) {

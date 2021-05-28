@@ -7,6 +7,7 @@ const bp = require('body-parser')
 const fs = require('fs');
 const cors = require('cors');
 const { connectableObservableDescriptor } = require('rxjs/internal/observable/ConnectableObservable');
+const { features } = require('process');
 var models; 
 var anomalyDetector;
 app.use(express.static(path.join(__dirname + '/dist/anomaly-detection-web-app')));
@@ -36,11 +37,14 @@ app.post('/api/correlative' , (req, res) => {
 
 //Post Method for '/search' url
 app.post('/api/detect', (req, res) => {
+
     anomalyDetector = new anomalyDetection.SimpleAnomalyDetector();
-    features = anomalyDetector.learnNormal(req.body?.normalString);
+    var features = anomalyDetector.learnNormal(req?.body?.normalString);
+    var anomalies = anomalyDetector.detect(req?.body?.anomalyString);
+    var bla = Object.assign(features,anomalies);
     // console.log("req" + req.body?.normalString);
     //features = anomalyDetector.getFeatures();
-    res.json(features);
+    res.json(bla);
     res.end();
     // res.end();
     // Input the JSON and put in string anomaly path and detect path

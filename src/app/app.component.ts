@@ -31,18 +31,8 @@ export class AppComponent {
      this.controllerService.LearnNormal(payload)
        .subscribe(res => {
           console.log(res);
-          // this.controllerService.getFeatures().subscribe(res => {
-          //   console.log(res)
-          // }, (err) => {
-          //   console.log(err);
-          // });
       }, (err) => {
          console.log(err);
        });
-    // this.controllerService.getFeatures().subscribe(res => {
-    //   console.log(res)
-    // }, (err) => {
-    //   console.log(err);
-    // });
   }
 }
