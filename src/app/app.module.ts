@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button';
 import { FeaturesListComponent } from './features-list/features-list.component';
 import { AnomaliesListComponent } from './anomalies-list/anomalies-list.component'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 
 @NgModule({
   declarations: [
@@ -39,8 +40,8 @@ import { AnomaliesListComponent } from './anomalies-list/anomalies-list.componen
     HttpClientModule,
     NgxCSVtoJSONModule,
     MatIconModule,
-    MatButtonModule
-
+    MatButtonModule,
+    MatProgressSpinnerModule
     ],
   providers: [],
   bootstrap: [AppComponent]

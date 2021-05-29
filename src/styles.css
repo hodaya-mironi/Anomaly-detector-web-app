@@ -46,10 +46,15 @@ body {
 .mat-ripple {
   visibility: hidden;
 }
+
+.mat-progress-spinner circle, .mat-spinner circle {   
+  stroke: rgba(0, 139, 139, 0.7);
+}
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 
 /* Track */
 ::-webkit-scrollbar-track {
