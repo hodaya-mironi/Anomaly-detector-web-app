@@ -18,10 +18,10 @@ export class AppComponent {
     this.chosenAlgorithm = selected;
   }
   public onLearnAnomalyFileUpload(fileString: any) {
-    this.anomalyString = fileString;
+    this.normalString= fileString;
   }
   public onDetectAnomalyFileUpload(fileString: any) {
-    this.normalString = fileString;
+    this.anomalyString = fileString;
   }
 
   public sendPayload() {

@@ -33,18 +33,27 @@ res.end();
 }
 );
 app.post('/api/correlative' , (req, res) => {
+    var correlativeData = anomalyDetector.showGraph(req?.body?.feature);
+    res.json(correlativeData);
+    res.end();
 });
 
 //Post Method for '/search' url
 app.post('/api/detect', (req, res) => {
 
+    if (req?.body?.chosenAlgorithm == "Regression"){
     anomalyDetector = new anomalyDetection.SimpleAnomalyDetector();
+    }
+    else{
+        anomalyDetector = new anomalyDetection.HybridAnomalyDetector();
+    }
     var features = anomalyDetector.learnNormal(req?.body?.normalString);
     var anomalies = anomalyDetector.detect(req?.body?.anomalyString);
-    var bla = Object.assign(features,anomalies);
+    var response = Object.assign(features,anomalies);
+    //console.log(anomalies);
     // console.log("req" + req.body?.normalString);
     //features = anomalyDetector.getFeatures();
-    res.json(bla);
+    res.json(response);
     res.end();
     // res.end();
     // Input the JSON and put in string anomaly path and detect path
@@ -68,39 +77,6 @@ app.post('/api/detect', (req, res) => {
 })
 
 app.listen(port, function() {
-   // const check = new AnomalyDetectionUtil();
     console.log("server listening on 8080");
-    // var list1 = [4, 5, 10];
-    // var list2 = [6, 8, 11];
-    // var point = new anomalyDetection.Point(2, 4);
-    // var point1 = new anomalyDetection.Point(3, 5);
-    // var point2 = new anomalyDetection.Point(1, 6);
-    // var line = new anomalyDetection.Line(3, 5);
-    // var correlation = new anomalyDetection.CorrelatedFeatures();
-    // correlation.setFeature1("Moria");
-    // var myJSON = '{"name":"John", "age":31, "city":"New York"}';
-    // var obj = JSON.parse(myJSON);
-    // var x = "city";
-    // console.log(obj[x]);
-    // console.log(obj.city);
-    // //return 0;
-    // var a = new anomalyDetection.SimpleAnomalyDetector();
-    // console.log(a.learnNormal("Moria,Yefet\n1,2\n3,5\n"));
-    // console.log(a.detect("Moria,Yefet\n1,2\n3,4\n"));
-})
 
-// [{
-//     feature1: 'A',
-//     feature2: 'B',
-//     timestep: 145
-// },
-// {
-//     feature1: 'A',
-//     feature2: 'B',
-//     timestep: 146
-// },{
-//     feature1: 'A',
-//     feature2: 'B',
-//     timestep: 148
-// },
-// ]
+})
