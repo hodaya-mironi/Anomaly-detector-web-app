@@ -15,9 +15,12 @@
     </button>
   </span>
 </div>
-<div class="features-list">
+<div *ngIf="!loading && isDetected" class="features-list">
   <app-anomalies-list></app-anomalies-list>
   <app-features-list></app-features-list>
+</div>
+<div *ngIf="loading && isDetected" class="features-list">
+  <mat-spinner></mat-spinner>
 </div>
 
 <div class="graphs">

@@ -10,6 +10,8 @@ export class AppComponent {
   chosenAlgorithm: string;
   anomalyString: File;
   normalString: File;
+  public loading: boolean;
+  public isDetected: boolean = false;
   title = 'Anomaly Detection Server';
   constructor(private controllerService: ControllerService) { }
   public onAlgorithmSelectedChange(selected: string) {
@@ -23,6 +25,8 @@ export class AppComponent {
   }
 
   public sendPayload() {
+    this.isDetected = true;
+    this.loading = true;
     const payload = {
       normalString: this.normalString,
       anomalyString: this.anomalyString,
@@ -30,6 +34,7 @@ export class AppComponent {
     };
      this.controllerService.LearnNormal(payload)
        .subscribe(res => {
+         this.loading = false;
           console.log(res);
       }, (err) => {
          console.log(err);
