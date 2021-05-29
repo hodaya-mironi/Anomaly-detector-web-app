@@ -266,8 +266,15 @@ class CorrelatedFeatures {
         for (var i = 0; i < this.keys.length; i++) {
             var maxPearson = 0.5;
             var correlation = new CorrelatedFeatures();
-            for (var j = 0; j < this.keys.length; j++) {
-                if (i!=j){
+            var flag = 0;
+            for (var k = 0; k<this.cf.length;k++){
+                if (this.cf[k].getFeature2()==this.keys[i]){
+                    flag = 1;
+                }
+            }
+            if (flag == 0){
+            for (var j = i+1; j < this.keys.length; j++) {
+
                 var p = Math.abs(util.pearson(this.regFlight[this.keys[i]], this.regFlight[this.keys[j]]));
                
                 if (p > maxPearson) {
@@ -281,11 +288,20 @@ class CorrelatedFeatures {
         }
             if (maxPearson != 0.5) {
                 this.cf.push(correlation);
+
             }
+            flag = 0;
         }
-        var features = {"features":this.keys};
+        var featuresWithCorrelation=[];
+        for (var i = 0; i<this.cf.length;i++){
+            featuresWithCorrelation.push(this.cf[i].getFeature1());
+            featuresWithCorrelation.push(this.cf[i].getFeature2());
+        }
+        var features = {"features":featuresWithCorrelation};
         return features;
-    }
+    
+    
+}
     completeCorrelation(correlation, numbers1, numbers2) {
         var util = new AnomalyDetectionUtil();
         var l = util.linearRegression(numbers1, numbers2);
@@ -321,6 +337,9 @@ class CorrelatedFeatures {
            
             }
         }
+        this.r.sort(function (a,b){
+            return a.getTimeStep()-b.getTimeStep();
+        });
         var anomalies = {"anomalies":this.r};
         return anomalies;
     }
@@ -344,6 +363,12 @@ class CorrelatedFeatures {
                 var correlation = this.cf[i].getCorrelation();
             }
         }
+        for (var i = 0; i<this.cf.length;i++){
+            if (this.cf[i].getFeature2()==feature){
+                var feature2 = this.cf[i].getFeature1();
+                var correlation = this.cf[i].getCorrelation();
+            }
+        }
         var columnLength = this.anomalousFlight["aileron"].length;
         var points = [];
         var anomalies = [];
@@ -351,12 +376,13 @@ class CorrelatedFeatures {
                 var p = new Point(parseFloat(this.anomalousFlight[feature][i]), parseFloat(this.anomalousFlight[feature2][i]));
                 points.push(p);
                 for (var j = 0;j<this.r.length;j++){
-                    if ((this.r[j].getFeature1()==feature) && (this.r[j].getFeature2()==feature2) && (this.r[j].getTimeStep()+1==i)){
+                    if ((((this.r[j].getFeature1()==feature) && (this.r[j].getFeature2()==feature2))||
+                    ((this.r[j].getFeature1()==feature2) && (this.r[j].getFeature2()==feature)))
+                     && (this.r[j].getTimeStep()+1==i)){
                     anomalies.push(p);
                 }
         }
     }
-
         var graph ={
             "feature1":feature,
             "feature2":feature2,
@@ -366,9 +392,7 @@ class CorrelatedFeatures {
         }
         return graph;
     }
-
-
- }
+}
 
  class HybridAnomalyDetector extends SimpleAnomalyDetector {
      constructor() {
@@ -385,6 +409,7 @@ class CorrelatedFeatures {
                  points.push(new Point(parseFloat(numbers1[i]), parseFloat(numbers2[i])));
              }
 
+
             let  c =     minEnclosingCircle(points);
              correlation.setX(c.x);
              correlation.setY(c.y);
@@ -399,8 +424,8 @@ class CorrelatedFeatures {
             super.createReport(p, correlation, index);
         } else {
             if (c.distance(p, new Point(correlation.getX(), correlation.getY())) > 1.1 * correlation.getThreshold()) {
-                ar = new AnomalyReport(correlation.getFeature1(), correlation.getFeature2(), index + 1);
-                r.push(ar);
+                var ar = new AnomalyReport(correlation.getFeature1(), correlation.getFeature2(), index + 1);
+                this.r.push(ar);
             }
         }
     }
