@@ -1,7 +1,6 @@
 <div>
-  <div class="header-pas">
-    AnomalyDetectionWebApp
-  </div>
+  <div class="header-line">
+    Anomaly Detection Server  </div>
   <span class="drop-off-files">
     <drop-off [fileType]="'normal'" (fileContentEmitter)="onLearnAnomalyFileUpload($event)"></drop-off>
     <drop-off [fileType]="'anomaly'" (fileContentEmitter)="onDetectAnomalyFileUpload($event)"></drop-off>

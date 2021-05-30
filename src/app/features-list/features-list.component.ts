@@ -11,7 +11,6 @@ export class FeaturesListComponent implements OnInit {
   selected: string;
   public set selection(v: string) {
     this.selectedFeature.emit(v);
-    console.log(v);
     this.selected = v;
   }
   constructor() {}
