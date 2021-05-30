@@ -1,0 +1,84 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>390</x><y>60</y><w>230</w><h>140</h></coordinates><panel_attributes>Class:AnomalyDetectionUtil
+--
+average(numbers);
+variance(numbers);
+covariance(numbers1, numbers2);
+pearson(numbers1, numbers2);
+linearRegression(numbers1, numbers2);
+deviation(p, l);
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>120</y><w>210</w><h>90</h></coordinates><panel_attributes>Class: Point
+--
+x;
+y;
+getX();
+getY();</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>0</y><w>100</w><h>80</h></coordinates><panel_attributes>Class: Line
+--
+a;
+b;
+f(x);
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>230</y><w>210</w><h>390</h></coordinates><panel_attributes>Class:CorrelatedFeatures
+--
+feature1;
+feature2;
+correlation;
+regressionLine;
+x;
+y;
+threshold;
+isCircle;
+getFeature1();
+getFeature2();
+getCorrelation();
+getRegressionLine();
+getX();
+getY();
+getThreshold();
+getIsCircle();
+setFeature1(feature);
+setFeature2(feature);
+setCorrelation(cor);
+setRegressionLine(line);
+setX(x1);
+setY(y1);
+setThreshold(threshold);
+setIsCircle(circle1);
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>440</y><w>160</w><h>110</h></coordinates><panel_attributes>Class:Circle
+--
+radius;
+center;
+distance(a,b);
+getCenter();
+getRadius();
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>250</y><w>210</w><h>180</h></coordinates><panel_attributes>Class:SimpleAnomalyDetector
+--
+regFlight;
+anomalousFlight;
+cf;
+r;
+keys;
+learnNormal(fileContent);
+completeCorrelation(correlation, numbers1, numbers2);
+detect(fileContent);
+createReport(p, correlation, index);
+showGraph(feature);
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>400</x><y>480</y><w>210</w><h>80</h></coordinates><panel_attributes>Class:HybridAnomalyDetector
+--
+completeCorrelation(correlation, numbers1, numbers2)
+createReport(p, correlation, index)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>250</y><w>210</w><h>160</h></coordinates><panel_attributes>Class:AnomalyReport
+--
+feature1;
+feature2;
+timestep;
+getFeature1();
+getFeature2();
+getTimeStep();
+setFeature1(feature);
+setFeature2(feature);
+setTimeStep(time);
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>420</y><w>90</w><h>80</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes><additional_attributes>10;60;30;10</additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>70</y><w>80</w><h>70</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;include&gt;&gt;</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>120</y><w>150</w><h>70</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>130;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>40</y><w>210</w><h>110</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>190;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>200</y><w>30</w><h>50</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;30;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>160</y><w>190</w><h>110</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>170;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>270</y><w>180</w><h>80</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>160;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>620</x><y>320</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>320</y><w>120</w><h>200</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;180;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>490</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>270</y><w>160</w><h>250</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>140;230;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>160</y><w>160</w><h>360</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>140;340;10;10</additional_attributes></element></diagram>
