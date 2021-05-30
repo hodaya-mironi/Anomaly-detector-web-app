@@ -251,13 +251,19 @@ class CorrelatedFeatures {
     learnNormal(fileContent) {
         let lines = fileContent.split("\n");
         this.keys = lines[0].split(",");
+        for (let i = this.keys.length-1; i>=0;i--){
+            for (let j = i-1;j>=0;j--){
+                if (this.keys[i]==this.keys[j]){
+                    this.keys[i]+='2';
+                }
+            }
+        }
         for (let i = 0; i < this.keys.length; i++) {
             this.regFlight[this.keys[i]] = [];
         }
         for (let i = 1; i < (lines.length) - 1; i++) {
             let temp = lines[i].split(',');
             for (let j = 0; j < (this.keys.length); j++) {
-                // data[features[j]].Add(temp[j]);
                 this.regFlight[this.keys[j]].push(temp[j]);
             }
         }
@@ -372,16 +378,21 @@ class CorrelatedFeatures {
         var columnLength = this.anomalousFlight["aileron"].length;
         var points = [];
         var anomalies = [];
+        var flag = 0;
         for (var i = 0; i < columnLength; i++) {
                 var p = new Point(parseFloat(this.anomalousFlight[feature][i]), parseFloat(this.anomalousFlight[feature2][i]));
-                points.push(p);
                 for (var j = 0;j<this.r.length;j++){
                     if ((((this.r[j].getFeature1()==feature) && (this.r[j].getFeature2()==feature2))||
                     ((this.r[j].getFeature1()==feature2) && (this.r[j].getFeature2()==feature)))
                      && (this.r[j].getTimeStep()+1==i)){
                     anomalies.push(p);
+                    flag = 1;
                 }
         }
+        if (flag == 0){
+            points.push(p);
+        }
+        flag = 0;
     }
         var graph ={
             "feature1":feature,
