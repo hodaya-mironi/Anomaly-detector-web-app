@@ -100,7 +100,14 @@ node server.js
 7. Open the browser `localhost:8080` by clicking [here](http://localhost:8080/)       
 <a name="UML"></a>
 ## UML
+We used the architectural pattern [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller):  
+1. Model - `anomaly-detector.js`
+2. View - `Angular project`
+3. Controller - `server.js`  
+
+For more information about the class hierarchy of the Server click [here](https://github.com/hodaya-mironi/Anomaly-detector-web-app/blob/master/Server%20UML.pdf).   
+For more information about the class hierarchy of the Client click [here](https://github.com/hodaya-mironi/Anomaly-detector-web-app/blob/master/Client%20UML.pdf).
 
 <a name="user"></a>
 ## User Stories Video
-...
+Click [here](https://www.youtube.com/watch?v=AL-sKdRt8-o) to see the video of the presentation of the web and the features.
