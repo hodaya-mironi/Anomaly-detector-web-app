@@ -1,19 +1,11 @@
 <div class="row align-items-center">
-  <div class="col-md-3"><h1>Chart.js</h1></div>
-  <div class="col-md-6">
-    <canvas baseChart 
-      [datasets]="lineChartData"
-      [labels]="lineChartLabels"
-      [options]="lineChartOptions"
-      [colors]="lineChartColors"
-      [legend]="lineChartLegend"
-      [chartType]="lineChartType"
-      (chartHover)="chartHovered($event)"
-      (chartClick)="chartClicked($event)">
+  <div class="correlative-feature">Correlative Feature: {{correlativeFeature}}:</div>
+  <div *ngIf="scatterChartData">
+    <canvas baseChart height="340px" width="550px" [datasets]="scatterChartData" [options]="scatterChartOptions"
+      [chartType]="scatterChartType">
+      >
     </canvas>
   </div>
   <div class="col-md-3">
-    <h2>Dia Selecionado:</h2>
-    <h4>{{daySelected}}</h4>
   </div>
 </div>

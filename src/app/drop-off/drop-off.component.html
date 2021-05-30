@@ -17,10 +17,10 @@
 </div>
 <div class="container" *ngIf="fileToUpload">
   <h3 class="header">
-    The uploaded {{ fileType }} file :
+    The uploaded {{ fileType }} file:
   </h3>
   <label class="file-name">
-    <img (click)="deleteFile()" src="../../assets/images/delete-file.svg"/>
+    <img (click)="deleteFile()" src="../../assets/images/delete-file.svg" />
     {{fileToUpload?.name}}
   </label>
 </div>

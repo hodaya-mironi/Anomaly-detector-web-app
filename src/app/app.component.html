@@ -10,19 +10,20 @@
     <app-models-list (changeSelection)="onAlgorithmSelectedChange($event)"></app-models-list>
   </span>
   <span class="upload-button">
-    <button (click)="sendPayload()" [disabled]="!normalString || !anomalyString || !chosenAlgorithm" mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
+    <button (click)="sendPayload()" [disabled]="!normalString || !anomalyString || !chosenAlgorithm" mat-fab
+      color="accent" aria-label="Example icon button with a bookmark icon">
       Detect!
     </button>
   </span>
 </div>
-<div *ngIf="!loading && isDetected" class="features-list">
-  <app-anomalies-list></app-anomalies-list>
-  <app-features-list></app-features-list>
+<div *ngIf="!loading && isDetected" class="detected-data">
+  <app-anomalies-list [anomaliesList]="anomalies"></app-anomalies-list>
+  <app-features-list [featuresList]="features" (selectedFeature)="onFeatureSelected($event)"></app-features-list>
+  <div *ngIf="isSelectedFeature" class="graphs">
+    <app-graphs [correlativeFeature]="correlativeSelectedFeature" [normalData]="allFeaturePointsCorrelative"
+      [anomalyData]="allFeatureAnomalyPointsCorrelative"></app-graphs>
+  </div>
 </div>
-<div *ngIf="loading && isDetected" class="features-list">
-  <mat-spinner></mat-spinner>
-</div>
-
-<div class="graphs">
-  <!-- <app-graphs></app-graphs> -->
+<div *ngIf="loading && isDetected" class="loader">
+  <mat-spinner [diameter]="100"></mat-spinner>
 </div>

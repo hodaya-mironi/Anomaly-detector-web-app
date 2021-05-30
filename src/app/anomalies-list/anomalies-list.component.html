@@ -1,8 +1,14 @@
+<div class="anomalies-list">
 
-<h3 class="header">
+  <h3 class="header">
     All Anomalies:
-</h3>
-<mat-list role="list">
-    <mat-list-item *ngFor="let anomaly of anomaliesList" role="listitem">{{anomaly}}</mat-list-item>
+  </h3>
+  <mat-list role="list">
+    <mat-list-item *ngFor="let anomaly of anomaliesList" role="listitem">
+      {{anomaly.feature1}} -
+      {{anomaly.feature2}}:
+      {{anomaly.timeStep}}
+    </mat-list-item>
 
   </mat-list>
+</div>

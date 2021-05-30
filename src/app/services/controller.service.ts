@@ -26,10 +26,9 @@ export class ControllerService {
       )
   }
 
-
-  getFeatures(): Observable<any> { 
-    let API_URL = `${this.REST_API}/getFeatures`;
-    return this.httpClient.get(API_URL)
+  getFeatureCorrelativeData(payload:any): Observable<any> { 
+    let API_URL = `${this.REST_API}/correlative`;
+    return this.httpClient.post(API_URL, payload)
       .pipe(
         catchError(this.handleError)
       )

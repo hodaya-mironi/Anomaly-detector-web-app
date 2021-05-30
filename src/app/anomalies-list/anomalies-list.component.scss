@@ -1,5 +1,10 @@
 h3 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #38424c;
-  }
+  font-size: 16px;
+  font-weight: 600;
+  color: #38424c;
+}
+
+mat-list {
+  overflow-y: scroll;
+  height: 340px;
+}

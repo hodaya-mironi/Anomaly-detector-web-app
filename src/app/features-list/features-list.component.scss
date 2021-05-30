@@ -1,8 +1,24 @@
 mat-list-option[aria-selected="true"] {
-    background: rgba(0, 139, 139, 0.7);
-  }
+  background: rgba(0, 139, 139, 0.7);
+}
+
+mat-list-option {
+  font-size: 12px;
+}
+
+mat-selection-list {
+  overflow-y: scroll;
+  height: 340px;
+}
+
 .features-list {
-    width: 100%;
-    margin-right: 5px;
-    margin-left: 5px;
+  width: 100%;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #38424c;
 }

@@ -31,7 +31,7 @@ export class DropOffComponent implements OnInit {
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
       this.fileContent = fileReader.result;
-    this.fileContentEmitter.emit(this.fileContent);
+      this.fileContentEmitter.emit(this.fileContent);
     };
     fileReader.readAsText(this.fileToUpload);
   }

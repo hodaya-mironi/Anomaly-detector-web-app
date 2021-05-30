@@ -1,4 +1,7 @@
 <div class="features-list">
+  <h3 class="header">
+    All Features:
+  </h3>
   <mat-selection-list [multiple]="false" #list [(ngModel)]="selection">
     <mat-list-option *ngFor="let feature of featuresList" [value]="feature">
       {{feature}}

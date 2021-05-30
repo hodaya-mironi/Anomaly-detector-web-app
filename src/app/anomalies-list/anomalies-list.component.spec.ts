@@ -8,9 +8,8 @@ describe('AnomaliesListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnomaliesListComponent ]
-    })
-    .compileComponents();
+      declarations: [AnomaliesListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

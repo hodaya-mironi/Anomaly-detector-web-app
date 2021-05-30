@@ -72,3 +72,13 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: gray; 
 }
+.mat-list-base .mat-list-option {
+  font-size: 12px;
+}
+.mat-list-base .mat-list-item {
+  width: 350px;
+  font-size: 12px;
+}
+.mat-list-base .mat-list-item:hover {
+  background-color: lightgray;
+}
