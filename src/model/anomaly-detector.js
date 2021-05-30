@@ -161,7 +161,6 @@ class CorrelatedFeatures {
      // Data members
      center;
      radius;
-     static minCirc;
 
      // Constructor by center point and radius
      constructor(center, radius) {
