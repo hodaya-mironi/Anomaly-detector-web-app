@@ -64,13 +64,20 @@ The application is built in 3 parts:
 3. The view- the user interface. It is an angular cli project. By the user requests, sends data (if needed) to the controller, gets response and shows it on the screen, as detailed above.
 ```
 
+<a name="before"></a>
+## Before Installation
+Before you clone the repository, make sur you have `nodejs` installed in your computer, if it's not installed, Install `nodejs` in the link: 'https://nodejs.org/en/download/'  
+
 <a name="inst"></a>
 ## Installation
-1. Clone the repository from GitHub:  
+1. Clone the repository from GitHub from the command line:  
 ```
 git clone https://github.com/hodaya-mironi/Anomaly-detector-web-app/
 ```  
-2. Install nodejs in the link: 'https://nodejs.org/en/download/'
+2. Run the command:  
+```
+cd Anomaly-detector-web-app
+```
 3. Install `NPM` packages:  
 ```
 npm install  
