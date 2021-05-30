@@ -46,7 +46,7 @@ Until the model send a response and the view get it from the controller, there w
 
 After the response is get in the view, the data will be shown on the screen.   
 There is a scroll list of all the anomalies in the files.   
-In addition, there is a scroll list of all the features that have anomalies in relation to the correlative feature. In that list, the user can scroll and click on each of the features, and it will show a graph of the correct correlative points and of the abnormal points of this feature.   
+In addition, there is a scroll list of all the features that have anomalies in relation to the correlative feature. In that list, the user can scroll and click on each of the features, and it will show a graph of the correct correlative points and of the anomalie points of this feature.   
 ![image](https://user-images.githubusercontent.com/71708182/120106597-57df2980-c166-11eb-9072-7e0a38f307f5.png)    
  
 
