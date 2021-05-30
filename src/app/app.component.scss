@@ -40,16 +40,12 @@ app-features-list {
   display: inline-flex;
   width: 20%;
   margin-left: 60px;
-  // overflow-y: scroll;
-  // height: 350px;
 }
 
 app-anomalies-list {
   display: inline-flex;
   width: 20%;
   margin-left: 25px;
-  //overflow-y: scroll;
-  //height: 350px;
 }
 
 .detected-data {
@@ -68,5 +64,4 @@ app-anomalies-list {
   display: flex;
   justify-content: center;
   align-items: center;
-  // margin-top: 100px;
 }

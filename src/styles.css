@@ -34,11 +34,6 @@ body {
   background-color: rgba(0, 139, 139, 0.7);
 }
 
-/* .mat-radio-button .mat-accent .mat-radio-checked .cdk-focused .cdk-program-focused{
-    background-color: rgba(0, 139, 139, 0.7);
-
-} */
-
 .mat-button-focus-overlay {
   background-color: transparent !important;
 }
