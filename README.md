@@ -67,7 +67,7 @@ The application is built in 3 parts:
 
 <a name="before"></a>
 ## Before Installation
-Before you clone the repository, make sur you have `nodejs` installed in your computer, if it's not installed, Install `nodejs` in the link:  
+Before you clone the repository, make sur you have `nodejs` installed in your computer, if it's not installed, install `nodejs` in the link:  
 [Download NodeJS](https://nodejs.org/en/download/)
 
 <a name="inst"></a>
