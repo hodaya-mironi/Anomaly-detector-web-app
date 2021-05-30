@@ -86,17 +86,16 @@ npm install
 ```  
 npm install -g @angular/cli
 ```  
-5. create a folder under the main folder, called 'dist', and under it create another folder called 'anomaly-detection-web-app'.
-6. Run the command:
+5. Run the command:
 ```  
 ng build --prod   
 ```     
 thats command compile the angular project(the view).   
-7. Run the command:
+6. Run the command:
 ```  
 node server.js
 ```
-8. Open the browser on  http://localhost:8080/    
+7. Open the browser on  http://localhost:8080/    
 <a name="UML"></a>
 ## UML
 
