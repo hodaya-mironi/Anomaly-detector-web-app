@@ -8,7 +8,6 @@ export class ModelsListComponent implements OnInit {
   public selected: string;
   public set selection(v: string) {
     this.changeSelection.emit(v);
-    console.log(v);
     this.selected = v;
   }
 

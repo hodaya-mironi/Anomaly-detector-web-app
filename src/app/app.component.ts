@@ -43,7 +43,6 @@ export class AppComponent {
         this.anomalies = res?.anomalies;
         this.features = res?.features;
         this.loading = false;
-        console.log(res);
       },
       (err) => {
         console.log(err);
@@ -61,7 +60,6 @@ export class AppComponent {
         this.allFeaturePointsCorrelative = res?.points;
         this.allFeatureAnomalyPointsCorrelative = res?.anomalies;
         this.isSelectedFeature = true;
-        console.log(res);
       },
       (err) => {
         console.log(err);
