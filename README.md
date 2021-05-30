@@ -97,7 +97,7 @@ thats command compile the angular project(the view).
 ```  
 node server.js
 ```
-7. Open the browser localhost:8080 by clicking [here](http://localhost:8080/)       
+7. Open the browser `localhost:8080` by clicking [here](http://localhost:8080/)       
 <a name="UML"></a>
 ## UML
 
