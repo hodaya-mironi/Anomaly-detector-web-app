@@ -38,7 +38,7 @@ The choose area is:
 After the twos files were uploaded and algorithm was chosen, the detect button will become enable and the user can click on it to detect the anomalies:   
 ![image](https://user-images.githubusercontent.com/71708182/120106202-db981680-c164-11eb-8961-9c461b49c33e.png)
 
-After the user clicke on the detect button, the view('app.component') will send a request to the controller ('server.js') , to send the data to the model ('anomalyDetector.js'),
+After the user click on the detect button, the view ('app.component') will send a request to the controller ('server.js') , to send the data to the model ('anomalyDetector.js'),
 and get back a response of all the anomalies, all the features that have anomalies with the correlative feature.   
 Until the model send a response and the view get it from the controller, there will be a loader on the screen, to show the user that something is happening:     
 
@@ -50,7 +50,7 @@ In addition, there is a scroll list of all the features that have anomalies in r
 ![image](https://user-images.githubusercontent.com/71708182/120106597-57df2980-c166-11eb-9072-7e0a38f307f5.png)    
  
 
-After we have done the algorithm detect there is a LOADER which basically it loads (spinner that rotates) until the display returns from the server and then we have two scroll zones down:  
+After we have done the algorithm detect there is a LOADER which basically loads (spinner that rotates) until the display returns from the server and then we have two scroll zones down:  
 ```
 1. All the anomalies points
 2. Features that were anomalies - any feature that was anomalie in front of the correlative feature on it - appears in the graph shown  
@@ -61,8 +61,8 @@ This web application is a one-page application. There is no routing, and all the
 The application is built in 3 parts:
 ```
 1. The model- the anomaly-detector.js. Do all the calculates with the input data.
-2. The controller- The API- the server.js. Has GET and POST requests, and get those requests from the view, and do the write logic of the model,  and response ths data that recieved from the model.
-3. The view- the user interface. It is an angular cli project. By the user requests, sends data (if needed) to the controller, gets response and shows it on the screen, as detailed above.
+2. The controller- The API - the server.js. Has GET and POST requests, and get those requests from the view, and do the write logic of the model, and response ths data that received from the model.
+3. The view- the user interface. It is an angular CLI project. By the user requests, sends data (if needed) to the controller, gets response and shows it on the screen, as detailed above.
 ```
 
 <a name="before"></a>
