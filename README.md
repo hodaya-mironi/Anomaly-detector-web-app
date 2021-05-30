@@ -3,9 +3,10 @@
 ## Table of contents
 1. [ Features. ](#feat)  
 2. [ Background. ](#back)  
-3. [ Installation. ](#inst)
-4. [ UML. ](#UML)
-5. [ User stories video. ](#user)
+3. [ Before Installation. ](#before)
+4. [ Installation. ](#inst)
+5. [ UML. ](#UML)
+6. [ User stories video. ](#user)
 
 <a name="feat"></a>
 ## Features
@@ -66,7 +67,8 @@ The application is built in 3 parts:
 
 <a name="before"></a>
 ## Before Installation
-Before you clone the repository, make sur you have `nodejs` installed in your computer, if it's not installed, Install `nodejs` in the link: 'https://nodejs.org/en/download/'  
+Before you clone the repository, make sur you have `nodejs` installed in your computer, if it's not installed, Install `nodejs` in the link:  
+[Download NodeJS](https://nodejs.org/en/download/)
 
 <a name="inst"></a>
 ## Installation
@@ -95,7 +97,7 @@ thats command compile the angular project(the view).
 ```  
 node server.js
 ```
-7. Open the browser on  http://localhost:8080/    
+7. Open the browser localhost:8080 by clicking [here](http://localhost:8080/)       
 <a name="UML"></a>
 ## UML
 
