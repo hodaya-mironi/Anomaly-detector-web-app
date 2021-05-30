@@ -1,27 +1,50 @@
 # AnomalyDetectionWebApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.12.
+## Table of contents
+1. [ Features. ](#feat)  
+2. [ Background. ](#back)  
+3. [ Installation. ](#inst)
+4. [ UML. ](#UML)
+5. [ User stories video. ](#user)
 
-## Development server
+<a name="feat"></a>
+## Features
+Firstly, the user uploads two CSV files:  
+1. Normal file
+2. Anomaly file  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The user can upload the files by two ways:  
+1. Drag and drop
+2. Upload from the browser of the file system  
 
-## Code scaffolding
+After the uploading, the user needs to choose the type of algorithm he wants to activate on the files: Hybrid / Regression.  
+-- The alolgorithm detect is not working until we choose files ()--  
+Note that it is also possible in DRAG AND DROP that after the user uploads a file there is a `X` and you can click on it and it cancels the current file uploaded and you can load another file if we made a mistake in uploading the file.  
+--picture of the x--  
+After we have done the algorithm detect there is a LOADER which basically it loads (spinner that rotates) until the display returns from the server and then we have two scroll zones down:  
+1. All the anomalies points
+2. Features that were anomalies - any feature that was anomalie in front of the correlative feature on it - appears in the graph shown  
+--picture of the scrolling with the graph--
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<a name="back"></a>
+## Background
+This web application is a one-page...
 
-## Build
+<a name="inst"></a>
+## Installation
+1. Clone the repository from GitHub:  
+```
+git clone https://github.com/hodaya-mironi/Anomaly-detector-web-app/
+```  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+2. Install `NPM` packages:  
+```
+npm install  
+```  
 
-## Running unit tests
+<a name="UML"></a>
+## UML
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<a name="user"></a>
+## User Stories Video
+...
